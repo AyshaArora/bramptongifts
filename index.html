@@ -1,1 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BramptonGifts — Handpicked Gifts in Stock</title>
+  <meta name="description" content="Locally curated gifts in Brampton. Pickup & GTA delivery available." />
+  <meta property="og:title" content="BramptonGifts — Handpicked Gifts in Stock" />
+  <meta property="og:description" content="Locally curated gifts in Brampton. Pickup & GTA delivery available." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bramptongifts.com" />
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --card: #121214;
+      --muted: #9aa0a6;
+      --text: #f5f7fb;
+      --accent: #ff64a0; /* playful pink */
+      --accent-2: #7cd5ff; /* soft blue */
+      --ring: rgba(255, 100, 160, 0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: linear-gradient(180deg, #0b0b0c 0%, #111 100%); }
+
+    header {
+      position: sticky; top:0; z-index: 50;
+      backdrop-filter: saturate(160%) blur(8px);
+      background: rgba(11,11,12,0.75);
+      border-bottom: 1px solid #1f1f22;
+    }
+    .container { width: min(1100px, 100%); margin: 0 auto; padding: 0 16px; }
+    .row { display:flex; align-items:center; justify-content:space-between; gap: 16px; padding: 14px 0; }
+    .brand { display:flex; align-items:center; gap: 10px; text-decoration:none; color: var(--text); font-weight: 800; letter-spacing: 0.4px; }
+    .brand .logo { width: 36px; height: 36px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2)); box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 6px 18px rgba(0,0,0,0.45); }
+
+    .searchbar { flex: 1 1 480px; display:flex; gap:10px; }
+    .searchbar input { flex:1; padding: 10px 12px; border-radius: 12px; border:1px solid #242428; background:#131316; color:var(--text); outline: none; }
+    .searchbar input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--ring); }
+    .searchbar select { padding:10px 12px; border-radius: 12px; border:1px solid #242428; background:#131316; color:var(--text); }
+
+    .icons { display:flex; align-items:center; gap: 10px; }
+    .icon-btn { position: relative; border:1px solid #242428; background:#131316; color:var(--text); padding: 8px 12px; border-radius: 12px; cursor: pointer; }
+    .icon-btn:hover { border-color: var(--accent); }
+    .badge { position:absolute; top:-6px; right:-6px; background: var(--accent); color:#111; font-weight: 800; font-size: 12px; padding:2px 6px; border-radius:999px; }
+
+    .hero { padding: 32px 0 8px; }
+    .hero-card { display:grid; grid-template-columns: 1.2fr 1fr; gap: 24px; background: linear-gradient(135deg, #141417 0%, #0f0f11 100%); border:1px solid #222227; border-radius: 18px; padding: 22px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+    @media (max-width: 860px){ .hero-card{ grid-template-columns: 1fr; } }
+    .hero h1 { margin: 0 0 6px; font-size: clamp(24px, 3vw, 36px); }
+    .hero p { margin:6px 0 14px; color: var(--muted); }
+    .cta { display:flex; gap: 10px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; padding: 12px 14px; border-radius: 12px; font-weight:700; letter-spacing: .2px; }
+    .btn-primary { background: var(--accent); color:#111; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid #2a2a30; }
+
+    .pill { display:inline-flex; align-items:center; gap:8px; border:1px dashed #2a2a30; color: var(--muted); padding: 8px 10px; border-radius: 999px; font-size: 12px; }
+
+    .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 18px 0 60px; }
+    @media (max-width: 1060px){ .grid { grid-template-columns: repeat(3, 1fr);} }
+    @media (max-width: 760px){ .grid { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 480px){ .grid { grid-template-columns: 1fr;} }
+
+    .card { background: var(--card); border:1px solid #202025; border-radius: 16px; overflow: hidden; display:flex; flex-direction: column; }
+    .thumb { width:100%; aspect-ratio: 4/3; background:#0d0d0f; display:grid; place-items:center; }
+    .thumb img { width:100%; height:100%; object-fit: cover; }
+    .info { padding: 12px; display:flex; flex-direction: column; gap: 10px; }
+    .title { font-weight: 700; }
+    .desc { color: var(--muted); font-size: 14px; line-height: 1.35; }
+    .price-row { display:flex; align-items:center; justify-content:space-between; }
+    .price { font-weight:800; font-size: 18px; }
+    .stock { font-size: 12px; color: var(--muted); }
+    .taglist { display:flex; flex-wrap:wrap; gap:6px; }
+    .tag { font-size: 11px; color: #c6cad0; border:1px solid #26262c; padding: 4px 6px; border-radius: 999px; }
+    .add { margin-top: 4px; }
+    .add button { width:100%; border: none; background: #202028; color: var(--text); padding: 10px; border-radius: 12px; cursor: pointer; font-weight:700; }
+    .add button:hover { outline:2px solid var(--ring); }
+    .add button[disabled] { opacity: .5; cursor:not-allowed; }
+
+    /* Cart drawer */
+    .drawer { position: fixed; top:0; right:0; width: min(420px, 92vw); height: 100vh; background: #0f0f12; border-left: 1px solid #202025; transform: translateX(100%); transition: transform .25s ease; z-index: 70; display:flex; flex-direction:column; }
+    .drawer.open { transform: translateX(0); }
+    .drawer header { padding: 14px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom: 1px solid #1d1d22; background: transparent; position: static; }
+    .drawer .items { flex:1; overflow:auto; display:flex; flex-direction:column; gap: 8px; padding: 12px; }
+    .drawer .item { display:grid; grid-template-columns: 64px 1fr auto; gap: 10px; background: #131318; border:1px solid #23232a; border-radius: 12px; padding: 10px; }
+    .drawer .item img { width:64px; height:64px; object-fit: cover; border-radius: 8px; }
+    .qty { display:flex; align-items:center; gap:6px; }
+    .qty button { width:28px; height:28px; border-radius: 8px; border:1px solid #2a2a30; background:#1a1a20; color:var(--text); cursor:pointer; }
+    .drawer footer { padding: 12px; border-top: 1px solid #1d1d22; background: #0f0f12; }
+    .rowy { display:flex; align-items:center; justify-content:space-between; margin: 6px 0; }
+
+    .notice { font-size: 12px; color: var(--muted); }
+
+    footer.site { border-top: 1px solid #1f1f22; color: var(--muted); }
+    footer.site .container { padding: 22px 16px; display:flex; justify-content:space-between; flex-wrap: wrap; gap:8px; }
+    a { color: var(--accent-2); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <a class="brand" href="#" aria-label="BramptonGifts Home">
+          <div class="logo" aria-hidden="true"></div>
+          <span>BramptonGifts</span>
+        </a>
+        <div class="searchbar" role="search">
+          <input id="q" type="search" placeholder="Search gifts (e.g., candles, mugs, birthday)" aria-label="Search" />
+          <select id="tagFilter" aria-label="Filter by tag">
+            <option value="">All tags</option>
+          </select>
+        </div>
+        <div class="icons">
+          <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+            🛍️ Cart <span class="badge" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card" role="banner">
+        <div>
+          <span class="pill">In‑stock • Local small business</span>
+          <h1>Thoughtful gifts, ready for pickup or delivery.</h1>
+          <p>Based in Brampton. Same‑day pickup and GTA delivery available. Secure checkout or e‑transfer — your choice.</p>
+          <div class="cta">
+            <a href="#catalog" class="btn btn-primary">Shop the catalog</a>
+            <button class="btn btn-outline" id="contactBtn">Contact us</button>
+          </div>
+        </div>
+        <div>
+          <div class="pill">How it works</div>
+          <p class="notice" style="margin-top:8px">Add items to your cart → checkout via email/WhatsApp or payment link → choose pickup in Brampton or delivery. You’ll get a confirmation within a few minutes during business hours.
+          </p>
+          <p class="notice"><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="mailto:orders@bramptongifts.com">orders@bramptongifts.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" aria-label="Product catalog">
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <header>
+      <strong>Your cart</strong>
+      <button class="icon-btn" id="closeDrawer" aria-label="Close cart">✕</button>
+    </header>
+    <div class="items" id="cartItems"></div>
+    <footer>
+      <div class="rowy"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+      <div class="notice">Taxes + shipping shown at confirmation. Pickup in Brampton is free.</div>
+      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap: wrap;">
+        <button class="btn btn-primary" id="checkoutEmail">Checkout via Email</button>
+        <button class="btn btn-outline" id="clearCart">Clear cart</button>
+      </div>
+    </footer>
+  </aside>
+
+  <footer class="site">
+    <div class="container">
+      <div>© <span id="year"></span> BramptonGifts • All rights reserved.</div>
+      <div>Follow us: <a href="#" id="ig">Instagram</a> • <a href="#" id="tiktok">TikTok</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // ======== CONFIGURE ME ========
+    const STORE = {
+      businessName: "BramptonGifts",
+      email: "orders@bramptongifts.com", // where orders will be emailed
+      currency: "CAD",
+      locale: 'en-CA',
+      instagram: "https://instagram.com/yourhandle",
+      tiktok: "https://tiktok.com/@yourhandle",
+      pickupAddress: "Near Bramalea City Centre, Brampton, ON",
+      // Optional: if you use Stripe Payment Links, put links on each product (paymentLink)
+    };
+
+    // Sample catalog — replace with your real items
+    const products = [
+      {
+        id: "candle-rose",
+        name: "Rose Blossom Candle",
+        price: 24.99,
+        stock: 12,
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+        description: "Hand‑poured soy candle • 8oz • rose & vanilla.",
+        tags: ["candles","home","valentines"]
+      },
+      {
+        id: "mug-letter",
+        name: "Monogram Mug (A–Z)",
+        price: 18.00,
+        stock: 20,
+        image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?q=80&w=1200&auto=format&fit=crop",
+        description: "Glossy ceramic mug • 350ml • dishwasher safe.",
+        tags: ["mugs","personalized","everyday"]
+      },
+      {
+        id: "hamper-spa",
+        name: "Spa Gift Hamper",
+        price: 59.00,
+        stock: 6,
+        image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop",
+        description: "Bath salts, candle, silk scrunchie, artisanal soap.",
+        tags: ["hampers","self‑care","birthday"]
+      },
+      {
+        id: "frame-photo",
+        name: "Photo Frame (5x7)",
+        price: 22.50,
+        stock: 14,
+        image: "https://images.unsplash.com/photo-1544211412-2ef542cb47d2?q=80&w=1200&auto=format&fit=crop",
+        description: "Wooden frame • easel & wall mount.",
+        tags: ["home","frames","housewarming"]
+      }
+    ];
+    // ======== END CONFIGURE ========
+
+    const $$ = (s, el=document) => el.querySelector(s);
+    const $$$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+    const fmt = (n) => new Intl.NumberFormat(STORE.locale, { style:'currency', currency: STORE.currency }).format(n);
+
+    // Cart state
+    const CART_KEY = 'bg_cart_v1';
+    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+    function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
+    function addToCart(id){
+      const p = products.find(x=>x.id===id);
+      if(!p || p.stock<=0) return;
+      const existing = cart.find(x=>x.id===id);
+      if(existing){ if(existing.qty < p.stock) existing.qty++; }
+      else cart.push({ id, qty: 1 });
+      saveCart();
+    }
+    function setQty(id, qty){ const it = cart.find(x=>x.id===id); if(!it) return; it.qty = Math.max(1, Math.min(qty, (products.find(p=>p.id===id)?.stock||1))); saveCart(); }
+    function removeItem(id){ cart = cart.filter(x=>x.id!==id); saveCart(); }
+    function clearCart(){ cart = []; saveCart(); }
+
+    function updateCartUI(){
+      const count = cart.reduce((s, x)=>s + x.qty, 0);
+      $$('#cartCount').textContent = count;
+      const list = $$('#cartItems'); list.innerHTML = '';
+      let subtotal = 0;
+      cart.forEach(it =>{
+        const p = products.find(x=>x.id===it.id); if(!p) return;
+        subtotal += p.price * it.qty;
+        const row = document.createElement('div'); row.className='item';
+        row.innerHTML = `
+          <img src="${p.image}" alt="${p.name}">
+          <div>
+            <div style="display:flex; justify-content:space-between; gap:8px; align-items:start">
+              <div>
+                <div class="title">${p.name}</div>
+                <div class="notice">${fmt(p.price)} • In stock: ${p.stock}</div>
+              </div>
+              <button class="icon-btn" aria-label="Remove item" data-remove="${p.id}">🗑️</button>
+            </div>
+            <div class="qty" style="margin-top:8px">
+              <button data-dec="${p.id}">−</button>
+              <span style="min-width:24px; text-align:center">${it.qty}</span>
+              <button data-inc="${p.id}">+</button>
+            </div>
+          </div>
+          <div style="font-weight:800">${fmt(p.price*it.qty)}</div>
+        `;
+        list.appendChild(row);
+      });
+      $$('#subtotal').textContent = fmt(subtotal);
+    }
+
+    function renderCatalog(filterText = '', tag = ''){
+      const grid = $$('#grid'); grid.innerHTML='';
+      const tags = new Set();
+      products.forEach(p=> p.tags?.forEach(t=>tags.add(t)));
+      const tagSel = $$('#tagFilter'); if(tagSel.options.length<=1){
+        Array.from(tags).sort().forEach(t=>{
+          const o = document.createElement('option'); o.value=t; o.textContent=t; tagSel.appendChild(o);
+        });
+      }
+      const q = filterText.toLowerCase().trim();
+      products.filter(p => {
+        const matchesQ = !q || [p.name, p.description, ...(p.tags||[])].join(' ').toLowerCase().includes(q);
+        const matchesTag = !tag || (p.tags||[]).includes(tag);
+        return matchesQ && matchesTag;
+      }).forEach(p=>{
+        const card = document.createElement('article'); card.className = 'card'; card.setAttribute('aria-label', p.name);
+        card.innerHTML = `
+          <div class="thumb"><img src="${p.image}" alt="${p.name}"></div>
+          <div class="info">
+            <div class="title">${p.name}</div>
+            <div class="desc">${p.description}</div>
+            <div class="taglist">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+            <div class="price-row">
+              <div class="price">${fmt(p.price)}</div>
+              <div class="stock">${p.stock>0?`${p.stock} in stock`:'Out of stock'}</div>
+            </div>
+            <div class="add">
+              <button ${p.stock<=0?'disabled':''} data-add="${p.id}">${p.stock<=0? 'Sold out':'Add to cart'}</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function openDrawer(){ const d=$$('#drawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); }
+    function closeDrawer(){ const d=$$('#drawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); }
+
+    function buildEmail(){
+      const ts = new Date().toISOString().replace(/[-:T]/g,'').slice(0,12);
+      let body = `Hello ${STORE.businessName},%0D%0A%0D%0AI'd like to place this order:%0D%0A%0D%0A`;
+      let total = 0;
+      cart.forEach(it=>{
+        const p = products.find(x=>x.id===it.id); if(!p) return;
+        total += p.price * it.qty;
+        body += `• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0D%0A`;
+      });
+      body += `%0D%0ASubtotal: ${fmt(total)}%0D%0A`;
+      body += `%0D%0APreference: Pickup at ${encodeURIComponent(STORE.pickupAddress)} or Delivery (address below)%0D%0A`;
+      body += `%0D%0AName:%0D%0APhone:%0D%0ADelivery address (if needed):%0D%0APreferred date/time:%0D%0APayment method (e‑transfer / cash on pickup):%0D%0A`;
+      const subject = encodeURIComponent(`${STORE.businessName} Order #${ts}`);
+      const mail = `mailto:${STORE.email}?subject=${subject}&body=${body}`;
+      return mail;
+    }
+
+    // Events
+    document.addEventListener('click', (e)=>{
+      const add = e.target.closest('[data-add]');
+      if(add){ addToCart(add.getAttribute('data-add')); }
+      const dec = e.target.closest('[data-dec]'); if(dec){ const id=dec.getAttribute('data-dec'); const it=cart.find(x=>x.id===id); if(it){ setQty(id, it.qty-1); }}
+      const inc = e.target.closest('[data-inc]'); if(inc){ const id=inc.getAttribute('data-inc'); const it=cart.find(x=>x.id===id); if(it){ setQty(id, it.qty+1); }}
+      const rm = e.target.closest('[data-remove]'); if(rm){ removeItem(rm.getAttribute('data-remove')); }
+      if(e.target.id==='cartBtn'){ openDrawer(); }
+      if(e.target.id==='closeDrawer'){ closeDrawer(); }
+      if(e.target.id==='clearCart'){ clearCart(); }
+      if(e.target.id==='checkoutEmail'){ if(cart.length===0){ alert('Your cart is empty.'); return; } window.location.href = buildEmail(); }
+      if(e.target.id==='contactBtn'){ window.location.href = `mailto:${STORE.email}`; }
+    });
+
+    $$('#q').addEventListener('input', (e)=>{ renderCatalog(e.target.value, $$('#tagFilter').value); });
+    $$('#tagFilter').addEventListener('change', (e)=>{ renderCatalog($$('#q').value, e.target.value); });
+
+    // Init
+    (function init(){
+      renderCatalog();
+      updateCartUI();
+      $$('#ig').href = STORE.instagram; $$('#tiktok').href = STORE.tiktok;
+      $$('#contactEmail').href = `mailto:${STORE.email}`; $$('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
 
