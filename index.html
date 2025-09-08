@@ -9,90 +9,90 @@
   <meta property="og:description" content="Locally curated gifts in Brampton. Pickup & GTA delivery available." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bramptongifts.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0b0b0c;
-      --card: #121214;
-      --muted: #9aa0a6;
-      --text: #f5f7fb;
-      --accent: #ff64a0; /* playful pink */
-      --accent-2: #7cd5ff; /* soft blue */
-      --ring: rgba(255, 100, 160, 0.35);
+    :root{
+      --bg: #fafafa;
+      --card: #ffffff;
+      --muted: #6b7280; /* slate-500 */
+      --text: #0f172a;  /* slate-900 */
+      --border: #e5e7eb; /* gray-200 */
+      --accent: #ec4899; /* pink-500 */
+      --ring: rgba(236,72,153,.25);
+      --shadow: 0 10px 30px rgba(2,6,23,.06);
+      --radius: 20px;
+      --space: clamp(16px, 3vw, 28px);
+      --maxw: 1200px;
     }
-    * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: linear-gradient(180deg, #0b0b0c 0%, #111 100%); }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg)}
 
-    header {
-      position: sticky; top:0; z-index: 50;
-      backdrop-filter: saturate(160%) blur(8px);
-      background: rgba(11,11,12,0.75);
-      border-bottom: 1px solid #1f1f22;
-    }
-    .container { width: min(1100px, 100%); margin: 0 auto; padding: 0 16px; }
-    .row { display:flex; align-items:center; justify-content:space-between; gap: 16px; padding: 14px 0; }
-    .brand { display:flex; align-items:center; gap: 10px; text-decoration:none; color: var(--text); font-weight: 800; letter-spacing: 0.4px; }
-    .brand .logo { width: 36px; height: 36px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2)); box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 6px 18px rgba(0,0,0,0.45); }
+    /* HEADER */
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border)}
+    .container{width:min(var(--maxw),100%);margin:0 auto;padding:0 var(--space)}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:800;letter-spacing:.2px}
+    .brand .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 120deg,#fce7f3,#fde68a,#d1fae5,#bfdbfe,#fce7f3);box-shadow:0 0 0 4px rgba(17,24,39,.03),var(--shadow)}
 
-    .searchbar { flex: 1 1 480px; display:flex; gap:10px; }
-    .searchbar input { flex:1; padding: 10px 12px; border-radius: 12px; border:1px solid #242428; background:#131316; color:var(--text); outline: none; }
-    .searchbar input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--ring); }
-    .searchbar select { padding:10px 12px; border-radius: 12px; border:1px solid #242428; background:#131316; color:var(--text); }
+    .searchbar{flex:1 1 520px;display:flex;gap:10px}
+    .searchbar input,.searchbar select{padding:12px 14px;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--text);outline:none}
+    .searchbar input:focus,.searchbar select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
 
-    .icons { display:flex; align-items:center; gap: 10px; }
-    .icon-btn { position: relative; border:1px solid #242428; background:#131316; color:var(--text); padding: 8px 12px; border-radius: 12px; cursor: pointer; }
-    .icon-btn:hover { border-color: var(--accent); }
-    .badge { position:absolute; top:-6px; right:-6px; background: var(--accent); color:#111; font-weight: 800; font-size: 12px; padding:2px 6px; border-radius:999px; }
+    .icon-btn{position:relative;border:1px solid var(--border);background:#fff;color:var(--text);padding:10px 14px;border-radius:14px;cursor:pointer;box-shadow:var(--shadow)}
+    .icon-btn:hover{border-color:var(--accent)}
+    .badge{position:absolute;top:-6px;right:-6px;background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:2px 6px;border-radius:999px}
 
-    .hero { padding: 32px 0 8px; }
-    .hero-card { display:grid; grid-template-columns: 1.2fr 1fr; gap: 24px; background: linear-gradient(135deg, #141417 0%, #0f0f11 100%); border:1px solid #222227; border-radius: 18px; padding: 22px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
-    @media (max-width: 860px){ .hero-card{ grid-template-columns: 1fr; } }
-    .hero h1 { margin: 0 0 6px; font-size: clamp(24px, 3vw, 36px); }
-    .hero p { margin:6px 0 14px; color: var(--muted); }
-    .cta { display:flex; gap: 10px; flex-wrap: wrap; }
-    .btn { display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; padding: 12px 14px; border-radius: 12px; font-weight:700; letter-spacing: .2px; }
-    .btn-primary { background: var(--accent); color:#111; }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid #2a2a30; }
+    /* HERO */
+    .hero{padding:calc(var(--space)*1.2) 0}
+    .hero-card{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--space);background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--border);border-radius:var(--radius);padding:calc(var(--space)*1.1);box-shadow:var(--shadow)}
+    @media (max-width:900px){.hero-card{grid-template-columns:1fr}}
+    .hero h1{margin:0 0 10px;font-size:clamp(28px,3.6vw,44px);line-height:1.15}
+    .hero p{margin:8px 0 14px;color:var(--muted);font-size:clamp(14px,1.6vw,16px)}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:12px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:700;letter-spacing:.2px}
+    .btn-primary{background:var(--text);color:#fff}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
 
-    .pill { display:inline-flex; align-items:center; gap:8px; border:1px dashed #2a2a30; color: var(--muted); padding: 8px 10px; border-radius: 999px; font-size: 12px; }
+    /* GRID */
+    #catalog{padding:0 0 calc(var(--space)*2)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,26px)}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:560px){.grid{grid-template-columns:1fr}}
 
-    .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding: 18px 0 60px; }
-    @media (max-width: 1060px){ .grid { grid-template-columns: repeat(3, 1fr);} }
-    @media (max-width: 760px){ .grid { grid-template-columns: repeat(2, 1fr);} }
-    @media (max-width: 480px){ .grid { grid-template-columns: 1fr;} }
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+    .thumb{width:100%;aspect-ratio:1/1;display:grid;place-items:center;background:#f8fafc}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .info{padding:16px;display:flex;flex-direction:column;gap:12px}
+    .title{font-weight:700;font-size:18px}
+    .desc{color:var(--muted);font-size:14px;line-height:1.4}
+    .price-row{display:flex;align-items:center;justify-content:space-between}
+    .price{font-weight:800;font-size:18px}
+    .stock{font-size:12px;color:var(--muted)}
+    .taglist{display:flex;flex-wrap:wrap;gap:6px}
+    .tag{font-size:11px;color:#475569;border:1px solid var(--border);padding:4px 6px;border-radius:999px;background:#fff}
+    .add{margin-top:4px}
+    .add button{width:100%;border:none;background:#0f172a;color:#fff;padding:12px;border-radius:12px;cursor:pointer;font-weight:700}
+    .add button:hover{filter:brightness(1.05)}
+    .add button[disabled]{opacity:.6;cursor:not-allowed}
 
-    .card { background: var(--card); border:1px solid #202025; border-radius: 16px; overflow: hidden; display:flex; flex-direction: column; }
-    .thumb { width:100%; aspect-ratio: 4/3; background:#0d0d0f; display:grid; place-items:center; }
-    .thumb img { width:100%; height:100%; object-fit: cover; }
-    .info { padding: 12px; display:flex; flex-direction: column; gap: 10px; }
-    .title { font-weight: 700; }
-    .desc { color: var(--muted); font-size: 14px; line-height: 1.35; }
-    .price-row { display:flex; align-items:center; justify-content:space-between; }
-    .price { font-weight:800; font-size: 18px; }
-    .stock { font-size: 12px; color: var(--muted); }
-    .taglist { display:flex; flex-wrap:wrap; gap:6px; }
-    .tag { font-size: 11px; color: #c6cad0; border:1px solid #26262c; padding: 4px 6px; border-radius: 999px; }
-    .add { margin-top: 4px; }
-    .add button { width:100%; border: none; background: #202028; color: var(--text); padding: 10px; border-radius: 12px; cursor: pointer; font-weight:700; }
-    .add button:hover { outline:2px solid var(--ring); }
-    .add button[disabled] { opacity: .5; cursor:not-allowed; }
+    /* DRAWER */
+    .drawer{position:fixed;top:0;right:0;width:min(440px,92vw);height:100vh;background:#fff;border-left:1px solid var(--border);transform:translateX(100%);transition:transform .25s ease;z-index:70;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(2,6,23,.06)}
+    .drawer.open{transform:translateX(0)}
+    .drawer header{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:transparent;position:static}
+    .drawer .items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:16px}
+    .drawer .item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}
+    .drawer .item img{width:72px;height:72px;object-fit:cover;border-radius:8px}
+    .qty{display:flex;align-items:center;gap:6px}
+    .qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:#f8fafc;color:var(--text);cursor:pointer}
+    .drawer footer{padding:16px;border-top:1px solid var(--border);background:#fff}
+    .rowy{display:flex;align-items:center;justify-content:space-between;margin:8px 0}
 
-    /* Cart drawer */
-    .drawer { position: fixed; top:0; right:0; width: min(420px, 92vw); height: 100vh; background: #0f0f12; border-left: 1px solid #202025; transform: translateX(100%); transition: transform .25s ease; z-index: 70; display:flex; flex-direction:column; }
-    .drawer.open { transform: translateX(0); }
-    .drawer header { padding: 14px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom: 1px solid #1d1d22; background: transparent; position: static; }
-    .drawer .items { flex:1; overflow:auto; display:flex; flex-direction:column; gap: 8px; padding: 12px; }
-    .drawer .item { display:grid; grid-template-columns: 64px 1fr auto; gap: 10px; background: #131318; border:1px solid #23232a; border-radius: 12px; padding: 10px; }
-    .drawer .item img { width:64px; height:64px; object-fit: cover; border-radius: 8px; }
-    .qty { display:flex; align-items:center; gap:6px; }
-    .qty button { width:28px; height:28px; border-radius: 8px; border:1px solid #2a2a30; background:#1a1a20; color:var(--text); cursor:pointer; }
-    .drawer footer { padding: 12px; border-top: 1px solid #1d1d22; background: #0f0f12; }
-    .rowy { display:flex; align-items:center; justify-content:space-between; margin: 6px 0; }
-
-    .notice { font-size: 12px; color: var(--muted); }
-
-    footer.site { border-top: 1px solid #1f1f22; color: var(--muted); }
-    footer.site .container { padding: 22px 16px; display:flex; justify-content:space-between; flex-wrap: wrap; gap:8px; }
-    a { color: var(--accent-2); text-decoration: none; }
+    footer.site{border-top:1px solid var(--border);color:var(--muted)}
+    footer.site .container{padding:22px var(--space);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    a{color:#2563eb;text-decoration:none}
   </style>
 </head>
 <body>
@@ -104,16 +104,12 @@
           <span>BramptonGifts</span>
         </a>
         <div class="searchbar" role="search">
-          <input id="q" type="search" placeholder="Search gifts (e.g., candles, mugs, birthday)" aria-label="Search" />
+          <input id="q" type="search" placeholder="Search gifts (toran, tealight, decor)" aria-label="Search" />
           <select id="tagFilter" aria-label="Filter by tag">
             <option value="">All tags</option>
           </select>
         </div>
-        <div class="icons">
-          <button class="icon-btn" id="cartBtn" aria-label="Open cart">
-            🛍️ Cart <span class="badge" id="cartCount">0</span>
-          </button>
-        </div>
+        <button class="icon-btn" id="cartBtn" aria-label="Open cart">🛍️ Cart <span class="badge" id="cartCount">0</span></button>
       </div>
     </div>
   </header>
@@ -122,9 +118,9 @@
     <section class="hero">
       <div class="hero-card" role="banner">
         <div>
-          <span class="pill">In‑stock • Local small business</span>
-          <h1>Thoughtful gifts, ready for pickup or delivery.</h1>
-          <p>Based in Brampton. Same‑day pickup and GTA delivery available. Secure checkout or e‑transfer — your choice.</p>
+          <span class="pill">In-stock • Local small business</span>
+          <h1>Festive décor & gifts, ready for pickup or delivery.</h1>
+          <p>Based in Brampton. Same-day pickup and GTA delivery available. Secure checkout or e-transfer — your choice.</p>
           <div class="cta">
             <a href="#catalog" class="btn btn-primary">Shop the catalog</a>
             <button class="btn btn-outline" id="contactBtn">Contact us</button>
@@ -132,9 +128,8 @@
         </div>
         <div>
           <div class="pill">How it works</div>
-          <p class="notice" style="margin-top:8px">Add items to your cart → checkout via email/WhatsApp or payment link → choose pickup in Brampton or delivery. You’ll get a confirmation within a few minutes during business hours.
-          </p>
-          <p class="notice"><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="mailto:orders@bramptongifts.com">orders@bramptongifts.com</a></p>
+          <p class="desc" style="margin-top:8px;color:var(--muted)">Add items to your cart → checkout via email (or WhatsApp link) → choose pickup in Brampton or delivery. We’ll confirm your order promptly during business hours.</p>
+          <p class="desc" style="color:var(--muted)"><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="mailto:orders@bramptongifts.com">orders@bramptongifts.com</a></p>
         </div>
       </div>
     </section>
@@ -152,8 +147,8 @@
     <div class="items" id="cartItems"></div>
     <footer>
       <div class="rowy"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
-      <div class="notice">Taxes + shipping shown at confirmation. Pickup in Brampton is free.</div>
-      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap: wrap;">
+      <div class="desc" style="color:var(--muted)">Taxes + shipping shown at confirmation. Pickup in Brampton is free.</div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" id="checkoutEmail">Checkout via Email</button>
         <button class="btn btn-outline" id="clearCart">Clear cart</button>
       </div>
@@ -177,46 +172,72 @@
       instagram: "https://instagram.com/yourhandle",
       tiktok: "https://tiktok.com/@yourhandle",
       pickupAddress: "Near Bramalea City Centre, Brampton, ON",
-      // Optional: if you use Stripe Payment Links, put links on each product (paymentLink)
     };
 
-    // Sample catalog — replace with your real items
+    // Upload these files to /images in your repo with the same names.
     const products = [
       {
-        id: "candle-rose",
-        name: "Rose Blossom Candle",
-        price: 24.99,
+        id: "lotus-hanging-pair-yellow",
+        name: "Shubh Labh Lotus Hangings (Pair) — Yellow",
+        price: 24.00,
+        stock: 10,
+        image: "images/IMG_6219.jpg",
+        description: "Wooden lotus with pearls & yellow pom-poms. Set of 2.",
+        tags: ["decor","hangings","diwali"]
+      },
+      {
+        id: "lotus-hanging-pair-pink",
+        name: "Shubh Labh Lotus Hangings (Pair) — Pink/Green",
+        price: 24.00,
+        stock: 10,
+        image: "images/IMG_6217.jpg",
+        description: "Wooden lotus with pearls & pink/green details. Set of 2.",
+        tags: ["decor","hangings","navratri"]
+      },
+      {
+        id: "toran-mixed",
+        name: "Bandhanwar Toran — Mixed Colours",
+        price: 34.00,
+        stock: 9,
+        image: "images/IMG_6218.jpg",
+        description: "Embroidered torans with pearls and pom-poms. Choose your colour in checkout.",
+        tags: ["toran","door","decor"]
+      },
+      {
+        id: "floral-ganesh-toran",
+        name: "Floral Toran with Ganesh",
+        price: 49.00,
+        stock: 4,
+        image: "images/IMG_6223.jpg",
+        description: "Artificial flowers with Ganesh & swastik medallions; pearl tassels.",
+        tags: ["toran","floral","pooja"]
+      },
+      {
+        id: "tealight-round-pair",
+        name: "Decorative Tealight Holders (Pair)",
+        price: 14.00,
+        stock: 15,
+        image: "images/PHOTO-2025-08-30-21-09-22.jpg",
+        description: "Embellished round tealight holders — assorted colours.",
+        tags: ["tealight","candles","decor"]
+      },
+      {
+        id: "lotus-string-pink",
+        name: "Lotus Bead Curtain — Pink/Yellow",
+        price: 19.00,
         stock: 12,
-        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
-        description: "Hand‑poured soy candle • 8oz • rose & vanilla.",
-        tags: ["candles","home","valentines"]
+        image: "images/PHOTO-2025-08-30-21-09-22 (1).jpg",
+        description: "Single hanging string with lotus & pearls; looks great in sets.",
+        tags: ["decor","hangings","navratri"]
       },
       {
-        id: "mug-letter",
-        name: "Monogram Mug (A–Z)",
-        price: 18.00,
-        stock: 20,
-        image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?q=80&w=1200&auto=format&fit=crop",
-        description: "Glossy ceramic mug • 350ml • dishwasher safe.",
-        tags: ["mugs","personalized","everyday"]
-      },
-      {
-        id: "hamper-spa",
-        name: "Spa Gift Hamper",
-        price: 59.00,
-        stock: 6,
-        image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop",
-        description: "Bath salts, candle, silk scrunchie, artisanal soap.",
-        tags: ["hampers","self‑care","birthday"]
-      },
-      {
-        id: "frame-photo",
-        name: "Photo Frame (5x7)",
-        price: 22.50,
-        stock: 14,
-        image: "https://images.unsplash.com/photo-1544211412-2ef542cb47d2?q=80&w=1200&auto=format&fit=crop",
-        description: "Wooden frame • easel & wall mount.",
-        tags: ["home","frames","housewarming"]
+        id: "ganesh-diya-stand",
+        name: "Ganesh Multi-Wick Diya Stand",
+        price: 39.00,
+        stock: 5,
+        image: "images/IMG_6221.jpg",
+        description: "Metal Ganesh diya with multiple wicks for a radiant pooja setup.",
+        tags: ["pooja","metal","gift"]
       }
     ];
     // ======== END CONFIGURE ========
@@ -257,7 +278,7 @@
             <div style="display:flex; justify-content:space-between; gap:8px; align-items:start">
               <div>
                 <div class="title">${p.name}</div>
-                <div class="notice">${fmt(p.price)} • In stock: ${p.stock}</div>
+                <div class="desc" style="color:var(--muted)">${fmt(p.price)} • In stock: ${p.stock}</div>
               </div>
               <button class="icon-btn" aria-label="Remove item" data-remove="${p.id}">🗑️</button>
             </div>
@@ -323,10 +344,9 @@
       });
       body += `%0D%0ASubtotal: ${fmt(total)}%0D%0A`;
       body += `%0D%0APreference: Pickup at ${encodeURIComponent(STORE.pickupAddress)} or Delivery (address below)%0D%0A`;
-      body += `%0D%0AName:%0D%0APhone:%0D%0ADelivery address (if needed):%0D%0APreferred date/time:%0D%0APayment method (e‑transfer / cash on pickup):%0D%0A`;
+      body += `%0D%0AName:%0D%0APhone:%0D%0AColour/variant (if any):%0D%0ADelivery address (if needed):%0D%0APreferred date/time:%0D%0APayment method (e-transfer / cash on pickup):%0D%0A`;
       const subject = encodeURIComponent(`${STORE.businessName} Order #${ts}`);
-      const mail = `mailto:${STORE.email}?subject=${subject}&body=${body}`;
-      return mail;
+      return `mailto:${STORE.email}?subject=${subject}&body=${body}`;
     }
 
     // Events
@@ -356,4 +376,3 @@
   </script>
 </body>
 </html>
-
