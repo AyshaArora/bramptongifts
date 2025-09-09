@@ -3,82 +3,104 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>BramptonGifts — Handpicked Gifts in Stock</title>
+  <title>BramptonGifts — Gifts & Festive Décor</title>
   <meta name="description" content="Locally curated gifts in Brampton. Pickup & GTA delivery available." />
-  <meta property="og:title" content="BramptonGifts — Handpicked Gifts in Stock" />
+  <meta property="og:title" content="BramptonGifts — Gifts & Festive Décor" />
   <meta property="og:description" content="Locally curated gifts in Brampton. Pickup & GTA delivery available." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bramptongifts.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#fafafa; --card:#fff; --muted:#6b7280; --text:#0f172a; --border:#e5e7eb;
-      --accent:#ec4899; --ring:rgba(236,72,153,.25); --shadow:0 10px 30px rgba(2,6,23,.06);
-      --radius:20px; --space:clamp(16px,3vw,28px); --maxw:1200px;
+      --bg:#fbfbfb; --card:#fff; --ink:#0b0f1a; --muted:#6b7280; --line:#e5e7eb;
+      --brand:#0b0f1a; --accent:#111827; --ring:rgba(17,24,39,.12);
+      --radius:18px; --space:clamp(14px,2.8vw,28px); --maxw:1200px;
+      --shadow:0 10px 30px rgba(2,6,23,.06);
     }
-    *{box-sizing:border-box} html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg)}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg);}
 
-    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border)}
+    /* Header */
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
     .container{width:min(var(--maxw),100%);margin:0 auto;padding:0 var(--space)}
-    .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:800}
-    .brand .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 120deg,#fce7f3,#fde68a,#d1fae5,#bfdbfe,#fce7f3);box-shadow:0 0 0 4px rgba(17,24,39,.03),var(--shadow)}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;letter-spacing:.1px}
+    .logo{width:36px;height:36px;border-radius:12px;background:radial-gradient(90% 100% at 20% 20%, #f0f4ff, #fff 60%, #fee2e2);border:1px solid #eef2ff;box-shadow:var(--shadow)}
+    .searchbar{flex:1 1 520px;display:flex;gap:10px;justify-content:center}
+    .searchbar input,.searchbar select{padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;outline:none}
+    .searchbar input:focus,.searchbar select:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
+    .actions{display:flex;align-items:center;gap:8px}
+    .icon-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:10px 12px;border-radius:14px;cursor:pointer;box-shadow:var(--shadow)}
+    .icon-btn:hover{border-color:#d1d5db}
+    .badge{min-width:18px;height:18px;display:inline-grid;place-items:center;border-radius:999px;background:#111827;color:#fff;font-size:12px;padding:0 6px}
 
-    .searchbar{flex:1 1 520px;display:flex;gap:10px}
-    .searchbar input,.searchbar select{padding:12px 14px;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--text);outline:none}
-    .searchbar input:focus,.searchbar select:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+    /* Social icons (header & footer) */
+    .social{display:flex;gap:10px}
+    .sico{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow)}
+    .sico svg{width:18px;height:18px}
+    .sico:hover{border-color:#d1d5db}
 
-    .icon-btn{position:relative;border:1px solid var(--border);background:#fff;color:var(--text);padding:10px 14px;border-radius:14px;cursor:pointer;box-shadow:var(--shadow)}
-    .icon-btn:hover{border-color:var(--accent)}
-    .badge{position:absolute;top:-6px;right:-6px;background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:2px 6px;border-radius:999px}
-
+    /* Hero */
     .hero{padding:calc(var(--space)*1.2) 0}
-    .hero-card{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--space);background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--border);border-radius:var(--radius);padding:calc(var(--space)*1.1);box-shadow:var(--shadow)}
-    @media (max-width:900px){.hero-card{grid-template-columns:1fr}}
-    .hero h1{margin:0 0 10px;font-size:clamp(28px,3.6vw,44px);line-height:1.15}
-    .hero p{margin:8px 0 14px;color:var(--muted);font-size:clamp(14px,1.6vw,16px)}
-    .pill{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:12px}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:700}
-    .btn-primary{background:var(--text);color:#fff}
-    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+    .panel{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space);background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:calc(var(--space)*1.1);box-shadow:var(--shadow)}
+    @media (max-width:900px){.panel{grid-template-columns:1fr}}
+    h1{margin:.1rem 0 0;font-size:clamp(28px,3.6vw,44px);line-height:1.12;letter-spacing:-.02em}
+    .muted{color:var(--muted)}
+    .rowy{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--line);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:700}
+    .btn-primary{background:#111827;color:#fff}
+    .btn-ghost{background:#fff;border:1px solid var(--line)}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 
+    /* Grid */
     #catalog{padding:0 0 calc(var(--space)*2)}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,26px)}
     @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:560px){.grid{grid-template-columns:1fr}}
-
-    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .08s ease}
+    .card:hover{transform:translateY(-2px)}
     .thumb{width:100%;aspect-ratio:1/1;display:grid;place-items:center;background:#f8fafc}
-    .thumb img{width:100%;height:100%;object-fit:cover}
+    .thumb img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
     .info{padding:16px;display:flex;flex-direction:column;gap:12px}
     .title{font-weight:700;font-size:18px}
-    .desc{color:var(--muted);font-size:14px;line-height:1.4}
+    .desc{color:var(--muted);font-size:14px;line-height:1.45}
     .price-row{display:flex;align-items:center;justify-content:space-between}
-    .price{font-weight:800;font-size:18px}
+    .price{font-weight:800}
     .stock{font-size:12px;color:var(--muted)}
     .taglist{display:flex;flex-wrap:wrap;gap:6px}
-    .tag{font-size:11px;color:#475569;border:1px solid var(--border);padding:4px 6px;border-radius:999px;background:#fff}
-    .add{margin-top:4px}
-    .add button{width:100%;border:none;background:#0f172a;color:#fff;padding:12px;border-radius:12px;cursor:pointer;font-weight:700}
-    .add button:hover{filter:brightness(1.05)}
-    .add button[disabled]{opacity:.6;cursor:not-allowed}
+    .tag{font-size:11px;color:#475569;border:1px solid var(--line);padding:4px 6px;border-radius:999px;background:#fff}
+    .add button{width:100%;border:none;background:#0f172a;color:#fff;padding:12px;border-radius:12px;font-weight:700;cursor:pointer}
+    .add button:hover{filter:brightness(1.06)}
+    .clickable{cursor:pointer}
 
-    .drawer{position:fixed;top:0;right:0;width:min(440px,92vw);height:100vh;background:#fff;border-left:1px solid var(--border);transform:translateX(100%);transition:transform .25s ease;z-index:70;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(2,6,23,.06)}
+    /* Drawer (cart) */
+    .drawer{position:fixed;top:0;right:0;width:min(440px,92vw);height:100vh;background:#fff;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .25s ease;z-index:70;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(2,6,23,.06)}
     .drawer.open{transform:translateX(0)}
-    .drawer header{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+    .drawer header{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
     .drawer .items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:16px}
-    .drawer .item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}
+    .drawer .item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px}
     .drawer .item img{width:72px;height:72px;object-fit:cover;border-radius:8px}
     .qty{display:flex;align-items:center;gap:6px}
-    .qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:#f8fafc;color:var(--text);cursor:pointer}
-    .drawer footer{padding:16px;border-top:1px solid var(--border)}
-    .rowy{display:flex;align-items:center;justify-content:space-between;margin:8px 0}
+    .qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:#f8fafc;color:var(--ink);cursor:pointer}
+    .drawer footer{padding:16px;border-top:1px solid var(--line)}
 
-    footer.site{border-top:1px solid var(--border);color:var(--muted)}
-    footer.site .container{padding:22px var(--space);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    /* Quick-view modal */
+    .modal{position:fixed;inset:0;background:rgba(15,23,42,.42);backdrop-filter:blur(2px);display:none;place-items:center;z-index:80}
+    .modal.open{display:grid}
+    .sheet{width:min(900px,92vw);background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.05fr 1fr;gap:20px;padding:18px}
+    @media (max-width:900px){.sheet{grid-template-columns:1fr}}
+    .sheet .big{width:100%;aspect-ratio:1/1;background:#f7f8fb;border-radius:14px;overflow:hidden}
+    .sheet .big img{width:100%;height:100%;object-fit:cover}
+    .sheet h2{margin:.2rem 0;font-size:clamp(22px,2.6vw,28px)}
+    .closeX{position:absolute;top:18px;right:18px;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer}
+    .sheet .actions{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+
+    footer.site{border-top:1px solid var(--line);color:var(--muted)}
+    footer.site .container{padding:22px var(--space);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     a{color:#2563eb;text-decoration:none}
   </style>
 </head>
@@ -90,33 +112,54 @@
           <div class="logo" aria-hidden="true"></div>
           <span>BramptonGifts</span>
         </a>
-        <div class="searchbar" role="search">
-          <input id="q" type="search" placeholder="Search gifts (toran, tealight, decor)" aria-label="Search" />
-          <select id="tagFilter" aria-label="Filter by tag">
-            <option value="">All tags</option>
-          </select>
+
+        <div class="searchbar" role="search" aria-label="Search">
+          <input id="q" type="search" placeholder="Search gifts (toran, tealight, decor)" />
+          <select id="tagFilter" aria-label="Filter by tag"><option value="">All tags</option></select>
         </div>
-        <button class="icon-btn" id="cartBtn" aria-label="Open cart">🛍️ Cart <span class="badge" id="cartCount">0</span></button>
+
+        <div class="actions">
+          <div class="social" aria-label="Social media">
+            <a class="sico" id="ig" aria-label="Instagram" href="#" target="_blank" rel="noreferrer">
+              <!-- Instagram -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/><path d="M16.5 7.5h.01" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.8" stroke-width="1.6"/></svg>
+            </a>
+            <a class="sico" id="tt" aria-label="TikTok" href="#" target="_blank" rel="noreferrer">
+              <!-- TikTok -->
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3a6.5 6.5 0 0 0 5 2v3.3a8.6 8.6 0 0 1-5-1.9v6.7a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1V10a2.9 2.9 0 1 0 2.9 2.9V3h1.7Z"/></svg>
+            </a>
+            <a class="sico" id="wa" aria-label="WhatsApp" href="#" target="_blank" rel="noreferrer">
+              <!-- WhatsApp -->
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 12a8.5 8.5 0 0 1-12 7.6L4 20l.6-4.3A8.5 8.5 0 1 1 20.5 12Zm-8.1-6.5A6.5 6.5 0 0 0 6 16.7l-.3 2.2 2.2-.3A6.5 6.5 0 1 0 12.4 5.5Zm3.1 8.7c-.2-.1-1-.5-1.1-.6s-.3-.1-.4.1-.5.6-.6.7-.2.1-.4 0a5.3 5.3 0 0 1-2.5-2.1c-.2-.3 0-.3.1-.4l.3-.3c.1 0 .1-.2.2-.3 0-.1 0-.2 0-.3l-.6-1.3c-.2-.5-.4-.4-.6-.4h-.5l-.3.2c-.1.2-.4.4-.4 1s.4 1.1.4 1.2a7.5 7.5 0 0 0 3.4 3.6 3 3 0 0 0 1.3.4c.5 0 1 0 1.4-.3s.7-.6.8-.9a1.6 1.6 0 0 0 .1-.9c0-.1-.2-.2-.4-.3Z"/></svg>
+            </a>
+            <a class="sico" id="em" aria-label="Email" href="#" >
+              <!-- Email -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <button class="icon-btn" id="cartBtn" aria-label="Open cart">🛍️ <span>Cart</span> <span class="badge" id="cartCount">0</span></button>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <div class="hero-card" role="banner">
+      <div class="panel" role="banner">
         <div>
           <span class="pill">In-stock • Local small business</span>
-          <h1>Festive décor & gifts, ready for pickup or delivery.</h1>
-          <p>Based in Brampton. Same-day pickup and GTA delivery available. Secure checkout or e-transfer — your choice.</p>
+          <h1>Modern gifts & festive décor, ready for pickup or delivery.</h1>
+          <p class="muted">Based in Brampton. Same-day pickup and GTA delivery available.</p>
           <div class="cta">
             <a href="#catalog" class="btn btn-primary">Shop the catalog</a>
-            <button class="btn btn-outline" id="contactBtn">Contact us</button>
+            <button class="btn btn-ghost" id="contactBtn">Contact us</button>
           </div>
         </div>
-        <div>
+        <div class="muted">
           <div class="pill">How it works</div>
-          <p class="desc" style="margin-top:8px;color:var(--muted)">Add items to your cart → checkout via Email or WhatsApp → choose pickup in Brampton or delivery. We’ll confirm promptly during business hours.</p>
-          <p class="desc" style="color:var(--muted)"><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="mailto:orders@bramptongifts.com">orders@bramptongifts.com</a></p>
+          <p style="margin-top:10px">Add items to your cart → checkout via Email / Gmail / WhatsApp → choose pickup in Brampton or delivery. We’ll confirm promptly during business hours.</p>
+          <p><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="#">orders@bramptongifts.com</a></p>
         </div>
       </div>
     </section>
@@ -126,6 +169,7 @@
     </section>
   </main>
 
+  <!-- Cart Drawer -->
   <aside class="drawer" id="drawer" aria-label="Shopping cart" aria-hidden="true">
     <header>
       <strong>Your cart</strong>
@@ -134,19 +178,54 @@
     <div class="items" id="cartItems"></div>
     <footer>
       <div class="rowy"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
-      <div class="desc" style="color:var(--muted)">Taxes + shipping shown at confirmation. Pickup in Brampton is free.</div>
+      <div class="muted">Taxes + shipping shown at confirmation. Pickup in Brampton is free.</div>
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" id="checkoutEmail">Checkout via Email</button>
-        <button class="btn btn-outline" id="checkoutWhatsApp">Checkout via WhatsApp</button>
-        <button class="btn btn-outline" id="clearCart">Clear cart</button>
+        <button class="btn btn-ghost" id="checkoutGmail">Send with Gmail</button>
+        <button class="btn btn-ghost" id="checkoutWhatsApp">Checkout via WhatsApp</button>
+        <button class="btn btn-ghost" id="clearCart">Clear cart</button>
       </div>
     </footer>
   </aside>
 
+  <!-- Quick-view modal -->
+  <div class="modal" id="quickView" aria-hidden="true">
+    <div class="sheet">
+      <button class="closeX" id="closeQV" aria-label="Close">✕</button>
+      <div class="big"><img id="qvImg" alt=""></div>
+      <div>
+        <h2 id="qvTitle"></h2>
+        <div class="muted" id="qvDesc"></div>
+        <div class="taglist" id="qvTags" style="margin-top:10px"></div>
+        <div class="rowy" style="margin-top:12px">
+          <div class="price" id="qvPrice">$0.00</div>
+          <div class="stock" id="qvStock"></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="qvAdd">Add to cart</button>
+          <button class="btn btn-ghost" id="qvEmail">Email this item</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site">
     <div class="container">
       <div>© <span id="year"></span> BramptonGifts • All rights reserved.</div>
-      <div>Follow us: <a href="#" id="ig">Instagram</a> • <a href="#" id="tiktok">TikTok</a></div>
+      <div class="social">
+        <a class="sico" id="igF" aria-label="Instagram" href="#" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.6"/><path d="M16.5 7.5h.01" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.8" stroke-width="1.6"/></svg>
+        </a>
+        <a class="sico" id="ttF" aria-label="TikTok" href="#" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3a6.5 6.5 0 0 0 5 2v3.3a8.6 8.6 0 0 1-5-1.9v6.7a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1V10a2.9 2.9 0 1 0 2.9 2.9V3h1.7Z"/></svg>
+        </a>
+        <a class="sico" id="waF" aria-label="WhatsApp" href="#" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 12a8.5 8.5 0 0 1-12 7.6L4 20l.6-4.3A8.5 8.5 0 1 1 20.5 12Z"/></svg>
+        </a>
+        <a class="sico" id="emF" aria-label="Email" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -154,206 +233,91 @@
     // ======== CONFIGURE ME ========
     const STORE = {
       businessName: "BramptonGifts",
-      // IMPORTANT: set this to a REAL mailbox you can receive at.
-      // If you haven't created orders@bramptongifts.com yet, use your Gmail for now.
-      email: "toni4505@gmail.com",
-      ccEmail: "", // optional: e.g., "rosyarora.cr@gmail.com" to get a copy
+      email: "toni4505@gmail.com", // use a working mailbox
+      ccEmail: "",                        // optional CC
       currency: "CAD",
       locale: "en-CA",
       instagram: "https://instagram.com/bramptongifts",
       tiktok: "https://tiktok.com/@yourhandle",
-      pickupAddress: "Near Bramalea City Centre, Brampton, ON",
-      // WhatsApp: use digits with country code, no spaces or plus. Example: "1647XXXXXXX"
-      whatsappNumber: "16473810660"
+      whatsappNumber: "16473810660",      // numbers only, country code first
+      pickupAddress: "Near Bramalea City Centre, Brampton, ON"
     };
 
     // Images folder is capital I: /Images
     const products = [
-      {
-        id: "lotus-hanging-pair-yellow",
-        name: "Shubh Labh Lotus Hangings (Pair) — Yellow",
-        price: 24.00, stock: 10,
-        image: "Images/IMG_6219.jpg",
-        description: "Wooden lotus with pearls & yellow pom-poms. Set of 2.",
-        tags: ["decor","hangings","diwali"]
-      },
-      {
-        id: "lotus-hanging-pair-pink",
-        name: "Shubh Labh Lotus Hangings (Pair) — Pink/Green",
-        price: 24.00, stock: 10,
-        image: "Images/IMG_6217.jpg",
-        description: "Wooden lotus with pearls & pink/green details. Set of 2.",
-        tags: ["decor","hangings","navratri"]
-      },
-      {
-        id: "toran-mixed",
-        name: "Bandhanwar Toran — Mixed Colours",
-        price: 34.00, stock: 9,
-        image: "Images/IMG_6218.jpg",
-        description: "Embroidered torans with pearls and pom-poms. Choose your colour in checkout.",
-        tags: ["toran","door","decor"]
-      },
-      {
-        id: "floral-ganesh-toran",
-        name: "Floral Toran with Ganesh",
-        price: 49.00, stock: 4,
-        image: "Images/IMG_6223.jpg",
-        description: "Artificial flowers with Ganesh & swastik medallions; pearl tassels.",
-        tags: ["toran","floral","pooja"]
-      },
-      {
-        id: "tealight-round-pair",
-        name: "Decorative Tealight Holders (Pair)",
-        price: 14.00, stock: 15,
-        image: "Images/PHOTO-2025-08-30-21-09-22.jpg",
-        description: "Embellished round tealight holders — assorted colours.",
-        tags: ["tealight","candles","decor"]
-      },
-      {
-        id: "lotus-string-pink",
-        name: "Lotus Bead Curtain — Pink/Yellow",
-        price: 19.00, stock: 12,
-        image: "Images/PHOTO-2025-08-30-21-09-22%20(1).jpg",
-        description: "Single hanging string with lotus & pearls; looks great in sets.",
-        tags: ["decor","hangings","navratri"]
-      },
-      {
-        id: "ganesh-diya-stand",
-        name: "Ganesh Multi-Wick Diya Stand",
-        price: 39.00, stock: 5,
-        image: "Images/IMG_6221.jpg",
-        description: "Metal Ganesh diya with multiple wicks for a radiant pooja setup.",
-        tags: ["pooja","metal","gift"]
-      }
+      { id:"lotus-hanging-pair-yellow", name:"Shubh Labh Lotus Hangings (Pair) — Yellow", price:24.00, stock:10, image:"Images/IMG_6219.jpg", description:"Wooden lotus with pearls & yellow pom-poms. Set of 2.", tags:["decor","hangings","diwali"] },
+      { id:"lotus-hanging-pair-pink",   name:"Shubh Labh Lotus Hangings (Pair) — Pink/Green", price:24.00, stock:10, image:"Images/IMG_6217.jpg", description:"Wooden lotus with pearls & pink/green details. Set of 2.", tags:["decor","hangings","navratri"] },
+      { id:"toran-mixed",               name:"Bandhanwar Toran — Mixed Colours", price:34.00, stock:9, image:"Images/IMG_6218.jpg", description:"Embroidered torans with pearls and pom-poms. Choose your colour in checkout.", tags:["toran","door","decor"] },
+      { id:"floral-ganesh-toran",       name:"Floral Toran with Ganesh", price:49.00, stock:4, image:"Images/IMG_6223.jpg", description:"Artificial flowers with Ganesh & swastik medallions; pearl tassels.", tags:["toran","floral","pooja"] },
+      { id:"tealight-round-pair",       name:"Decorative Tealight Holders (Pair)", price:14.00, stock:15, image:"Images/PHOTO-2025-08-30-21-09-22.jpg", description:"Embellished round tealight holders — assorted colours.", tags:["tealight","candles","decor"] },
+      { id:"lotus-string-pink",         name:"Lotus Bead Curtain — Pink/Yellow", price:19.00, stock:12, image:"Images/PHOTO-2025-08-30-21-09-22%20(1).jpg", description:"Single hanging string with lotus & pearls; looks great in sets.", tags:["decor","hangings","navratri"] },
+      { id:"ganesh-diya-stand",         name:"Ganesh Multi-Wick Diya Stand", price:39.00, stock:5, image:"Images/IMG_6221.jpg", description:"Metal Ganesh diya with multiple wicks for a radiant pooja setup.", tags:["pooja","metal","gift"] }
     ];
     // ======== END CONFIGURE ========
 
-    const $$ = (s, el=document) => el.querySelector(s);
-    const $$$ = (s, el=document) => Array.from(el.querySelectorAll(s));
-    const fmt = (n) => new Intl.NumberFormat(STORE.locale, { style:'currency', currency: STORE.currency }).format(n);
+    const $$=(s,el=document)=>el.querySelector(s);
+    const $$$=(s,el=document)=>Array.from(el.querySelectorAll(s));
+    const fmt=n=>new Intl.NumberFormat(STORE.locale,{style:'currency',currency:STORE.currency}).format(n);
+
+    // Social links
+    ['ig','igF'].forEach(id=> $$('#'+id).href = STORE.instagram);
+    ['tt','ttF'].forEach(id=> $$('#'+id).href = STORE.tiktok);
+    const waLink = STORE.whatsappNumber ? `https://wa.me/${STORE.whatsappNumber}` : '#';
+    ['wa','waF'].forEach(id=> $$('#'+id).href = waLink);
+    ['em','emF','contactEmail'].forEach(id=> $$('#'+id).href = `mailto:${STORE.email}`);
 
     // Cart state
-    const CART_KEY = 'bg_cart_v1';
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-
+    const CART_KEY='bg_cart_v1';
+    let cart = JSON.parse(localStorage.getItem(CART_KEY)||'[]');
     function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
-    function addToCart(id){
-      const p = products.find(x=>x.id===id);
-      if(!p || p.stock<=0) return;
-      const existing = cart.find(x=>x.id===id);
-      if(existing){ if(existing.qty < p.stock) existing.qty++; }
-      else cart.push({ id, qty: 1 });
-      saveCart();
-    }
-    function setQty(id, qty){ const it = cart.find(x=>x.id===id); if(!it) return; it.qty = Math.max(1, Math.min(qty, (products.find(p=>p.id===id)?.stock||1))); saveCart(); }
-    function removeItem(id){ cart = cart.filter(x=>x.id!==id); saveCart(); }
-    function clearCart(){ cart = []; saveCart(); }
+    function addToCart(id){ const p=products.find(x=>x.id===id); if(!p||p.stock<=0) return; const e=cart.find(x=>x.id===id); e? (e.qty=Math.min(e.qty+1,p.stock)) : cart.push({id,qty:1}); saveCart(); }
+    function setQty(id,qty){ const it=cart.find(x=>x.id===id); if(!it) return; it.qty=Math.max(1,Math.min(qty,(products.find(p=>p.id===id)?.stock||1))); saveCart(); }
+    function removeItem(id){ cart=cart.filter(x=>x.id!==id); saveCart(); }
+    function clearCart(){ cart=[]; saveCart(); }
 
     function updateCartUI(){
-      const count = cart.reduce((s, x)=>s + x.qty, 0);
+      const count = cart.reduce((s,x)=>s+x.qty,0);
       $$('#cartCount').textContent = count;
-      const list = $$('#cartItems'); list.innerHTML = '';
-      let subtotal = 0;
-      cart.forEach(it =>{
-        const p = products.find(x=>x.id===it.id); if(!p) return;
-        subtotal += p.price * it.qty;
-        const row = document.createElement('div'); row.className='item';
-        row.innerHTML = `
+      const list = $$('#cartItems'); list.innerHTML='';
+      let subtotal=0;
+      cart.forEach(it=>{
+        const p=products.find(x=>x.id===it.id); if(!p) return;
+        subtotal += p.price*it.qty;
+        const row=document.createElement('div'); row.className='item';
+        row.innerHTML=`
           <img src="${p.image}" alt="${p.name}">
           <div>
-            <div style="display:flex; justify-content:space-between; gap:8px; align-items:start">
-              <div>
-                <div class="title">${p.name}</div>
-                <div class="desc" style="color:var(--muted)">${fmt(p.price)} • In stock: ${p.stock}</div>
-              </div>
-              <button class="icon-btn" aria-label="Remove item" data-remove="${p.id}">🗑️</button>
+            <div class="rowy" style="align-items:flex-start">
+              <div><div class="title">${p.name}</div><div class="muted">${fmt(p.price)} • In stock: ${p.stock}</div></div>
+              <button class="icon-btn" data-remove="${p.id}" aria-label="Remove item">🗑️</button>
             </div>
             <div class="qty" style="margin-top:8px">
               <button data-dec="${p.id}">−</button>
-              <span style="min-width:24px; text-align:center">${it.qty}</span>
+              <span style="min-width:24px;text-align:center">${it.qty}</span>
               <button data-inc="${p.id}">+</button>
             </div>
           </div>
-          <div style="font-weight:800">${fmt(p.price*it.qty)}</div>
-        `;
+          <div style="font-weight:800">${fmt(p.price*it.qty)}</div>`;
         list.appendChild(row);
       });
       $$('#subtotal').textContent = fmt(subtotal);
     }
 
-    function buildEmail(){
-      const ts = new Date().toISOString().replace(/[-:T]/g,'').slice(0,12);
-      let body = `Hello ${STORE.businessName},%0D%0A%0D%0AI'd like to place this order:%0D%0A%0D%0A`;
-      let total = 0;
-      cart.forEach(it=>{
-        const p = products.find(x=>x.id===it.id); if(!p) return;
-        total += p.price * it.qty;
-        body += `• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0D%0A`;
-      });
-      body += `%0D%0ASubtotal: ${fmt(total)}%0D%0A`;
-      body += `%0D%0APreference: Pickup at ${encodeURIComponent(STORE.pickupAddress)} or Delivery (address below)%0D%0A`;
-      body += `%0D%0AName:%0D%0APhone:%0D%0AColour/variant (if any):%0D%0ADelivery address (if needed):%0D%0APreferred date/time:%0D%0APayment method (e-transfer / cash on pickup):%0D%0A`;
-      const subject = encodeURIComponent(`${STORE.businessName} Order #${ts}`);
-      const to = `mailto:${STORE.email}?subject=${subject}&body=${body}`;
-      const cc = STORE.ccEmail ? `&cc=${encodeURIComponent(STORE.ccEmail)}` : "";
-      return to + cc;
-    }
-
-    function buildWhatsApp(){
-      if(!STORE.whatsappNumber){ return null; }
-      let text = `Order for ${STORE.businessName}%0A%0A`;
-      let total = 0;
-      cart.forEach(it=>{
-        const p = products.find(x=>x.id===it.id); if(!p) return;
-        total += p.price * it.qty;
-        text += `• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0A`;
-      });
-      text += `%0ASubtotal: ${fmt(total)}%0A%0A`;
-      text += `Name:%0APhone:%0AColour/variant (if any):%0ADelivery address (if needed):%0APreferred date/time:%0APayment method (e-transfer / cash on pickup):`;
-      return `https://wa.me/${STORE.whatsappNumber}?text=${text}`;
-    }
-
-    // Events
-    document.addEventListener('click', (e)=>{
-      const add = e.target.closest('[data-add]');
-      if(add){ addToCart(add.getAttribute('data-add')); }
-      const dec = e.target.closest('[data-dec]'); if(dec){ const id=dec.getAttribute('data-dec'); const it=cart.find(x=>x.id===id); if(it){ setQty(id, it.qty-1); }}
-      const inc = e.target.closest('[data-inc]'); if(inc){ const id=inc.getAttribute('data-inc'); const it=cart.find(x=>x.id===id); if(it){ setQty(id, it.qty+1); }}
-      const rm = e.target.closest('[data-remove]'); if(rm){ removeItem(rm.getAttribute('data-remove')); }
-      if(e.target.id==='cartBtn'){ const d=$$('#drawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); }
-      if(e.target.id==='closeDrawer'){ const d=$$('#drawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); }
-      if(e.target.id==='clearCart'){ clearCart(); }
-      if(e.target.id==='checkoutEmail'){
-        if(cart.length===0){ alert('Your cart is empty.'); return; }
-        window.open(buildEmail(), '_blank'); // open compose
-      }
-      if(e.target.id==='checkoutWhatsApp'){
-        if(cart.length===0){ alert('Your cart is empty.'); return; }
-        const wa = buildWhatsApp();
-        if(!wa){ alert('WhatsApp number not configured.'); return; }
-        window.open(wa, '_blank');
-      }
-      if(e.target.id==='contactBtn'){ window.location.href = `mailto:${STORE.email}`; }
-    });
-
-    $$('#q').addEventListener('input', (e)=>{ renderCatalog(e.target.value, $$('#tagFilter').value); });
-    $$('#tagFilter').addEventListener('change', (e)=>{ renderCatalog($$('#q').value, e.target.value); });
-
-    function renderCatalog(filterText = '', tag = ''){
-      const grid = $$('#grid'); grid.innerHTML='';
-      const tags = new Set(); products.forEach(p=> p.tags?.forEach(t=>tags.add(t)));
-      const tagSel = $$('#tagFilter'); if(tagSel.options.length<=1){
-        Array.from(tags).sort().forEach(t=>{ const o = document.createElement('option'); o.value=t; o.textContent=t; tagSel.appendChild(o); });
-      }
-      const q = filterText.toLowerCase().trim();
-      products.filter(p => {
-        const matchesQ = !q || [p.name, p.description, ...(p.tags||[])].join(' ').toLowerCase().includes(q);
-        const matchesTag = !tag || (p.tags||[]).includes(tag);
+    function renderCatalog(qText='', tag=''){
+      const grid=$$('#grid'); grid.innerHTML='';
+      const tags=new Set(); products.forEach(p=>p.tags?.forEach(t=>tags.add(t)));
+      const tagSel=$$('#tagFilter'); if(tagSel.options.length<=1){ Array.from(tags).sort().forEach(t=>{const o=document.createElement('option'); o.value=t; o.textContent=t; tagSel.appendChild(o);}); }
+      const q=qText.toLowerCase().trim();
+      products.filter(p=>{
+        const matchesQ=!q || [p.name,p.description,...(p.tags||[])].join(' ').toLowerCase().includes(q);
+        const matchesTag=!tag || (p.tags||[]).includes(tag);
         return matchesQ && matchesTag;
-      }).forEach(p=>{
-        const card = document.createElement('article'); card.className='card'; card.setAttribute('aria-label', p.name);
-        card.innerHTML = `
-          <div class="thumb"><img src="${p.image}" alt="${p.name}"></div>
+      }).forEach((p,idx)=>{
+        const card=document.createElement('article'); card.className='card clickable'; card.setAttribute('data-id',p.id);
+        card.innerHTML=`
+          <div class="thumb clickable" data-view="${p.id}">
+            <img loading="lazy" src="${p.image}" alt="${p.name}">
+          </div>
           <div class="info">
             <div class="title">${p.name}</div>
             <div class="desc">${p.description}</div>
@@ -363,21 +327,101 @@
               <div class="stock">${p.stock>0?`${p.stock} in stock`:'Out of stock'}</div>
             </div>
             <div class="add">
-              <button ${p.stock<=0?'disabled':''} data-add="${p.id}">${p.stock<=0?'Sold out':'Add to cart'}</button>
+              <button ${p.stock<=0?'disabled':''} data-add="${p.id}">${p.stock<=0? 'Sold out':'Add to cart'}</button>
             </div>
           </div>`;
         grid.appendChild(card);
       });
     }
 
+    // Compose helpers
+    function buildEmail(){
+      const ts=new Date().toISOString().replace(/[-:T]/g,'').slice(0,12);
+      let body=`Hello ${STORE.businessName},%0D%0A%0D%0AI'd like to place this order:%0D%0A%0D%0A`;
+      let total=0; cart.forEach(it=>{ const p=products.find(x=>x.id===it.id); if(!p)return; total+=p.price*it.qty; body+=`• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0D%0A`; });
+      body+=`%0D%0ASubtotal: ${fmt(total)}%0D%0A%0D%0APreference: Pickup at ${encodeURIComponent(STORE.pickupAddress)} or Delivery (address below)%0D%0A%0D%0AName:%0D%0APhone:%0D%0AColour/variant (if any):%0D%0ADelivery address (if needed):%0D%0APreferred date/time:%0D%0APayment method (e-transfer / cash on pickup):%0D%0A`;
+      const subject=encodeURIComponent(`${STORE.businessName} Order #${ts}`);
+      const to=`mailto:${STORE.email}?subject=${subject}&body=${body}`;
+      const cc=STORE.ccEmail?`&cc=${encodeURIComponent(STORE.ccEmail)}`:"";
+      return to+cc;
+    }
+    function buildGmailWeb(){
+      const ts=new Date().toISOString().replace(/[-:T]/g,'').slice(0,12);
+      let body=`Hello ${STORE.businessName},%0A%0AI'd like to place this order:%0A%0A`;
+      let total=0; cart.forEach(it=>{ const p=products.find(x=>x.id===it.id); if(!p)return; total+=p.price*it.qty; body+=`• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0A`; });
+      body+=`%0ASubtotal: ${fmt(total)}%0A%0A`; body+=`Preference: Pickup at ${encodeURIComponent(STORE.pickupAddress)} or Delivery (address below)%0A%0AName:%0APhone:%0AColour/variant (if any):%0ADelivery address (if needed):%0APreferred date/time:%0APayment method (e-transfer / cash on pickup):%0A`;
+      const subject=encodeURIComponent(`${STORE.businessName} Order #${ts}`);
+      const to=encodeURIComponent(STORE.email); const cc=STORE.ccEmail?`&cc=${encodeURIComponent(STORE.ccEmail)}`:"";
+      return `https://mail.google.com/mail/?view=cm&fs=1&to=${to}${cc}&su=${subject}&body=${body}`;
+    }
+    function buildWhatsApp(){
+      if(!STORE.whatsappNumber) return null;
+      let text=`Order for ${STORE.businessName}%0A%0A`; let total=0;
+      cart.forEach(it=>{ const p=products.find(x=>x.id===it.id); if(!p)return; total+=p.price*it.qty; text+=`• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0A`; });
+      text+=`%0ASubtotal: ${fmt(total)}%0A%0AName:%0APhone:%0AColour/variant:%0ADelivery address:%0APreferred date/time:%0APayment method:%0A`;
+      return `https://wa.me/${STORE.whatsappNumber}?text=${text}`;
+    }
+
+    // Quick-view logic
+    let currentId=null;
+    function openQuickView(id){
+      const p=products.find(x=>x.id===id); if(!p) return;
+      currentId=id;
+      $$('#qvImg').src = p.image;
+      $$('#qvImg').alt = p.name;
+      $$('#qvTitle').textContent = p.name;
+      $$('#qvDesc').textContent = p.description;
+      $$('#qvTags').innerHTML = (p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+      $$('#qvPrice').textContent = fmt(p.price);
+      $$('#qvStock').textContent = p.stock>0?`${p.stock} in stock`:'Out of stock';
+      $$('#qvAdd').disabled = p.stock<=0;
+      $$('#quickView').classList.add('open');
+      $$('#quickView').setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    }
+    function closeQuickView(){
+      $$('#quickView').classList.remove('open');
+      $$('#quickView').setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    }
+
+    // Events
+    document.addEventListener('click', (e)=>{
+      const add=e.target.closest('[data-add]'); if(add){ addToCart(add.getAttribute('data-add')); }
+      const dec=e.target.closest('[data-dec]'); if(dec){ const id=dec.getAttribute('data-dec'); const it=cart.find(x=>x.id===id); if(it){ setQty(id,it.qty-1); } }
+      const inc=e.target.closest('[data-inc]'); if(inc){ const id=inc.getAttribute('data-inc'); const it=cart.find(x=>x.id===id); if(it){ setQty(id,it.qty+1); } }
+      const rm=e.target.closest('[data-remove]'); if(rm){ removeItem(rm.getAttribute('data-remove')); }
+      if(e.target.id==='cartBtn'){ const d=$$('#drawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); }
+      if(e.target.id==='closeDrawer'){ const d=$$('#drawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); }
+      if(e.target.id==='clearCart'){ clearCart(); }
+      if(e.target.id==='checkoutEmail'){ if(cart.length===0){ alert('Your cart is empty.'); return; } window.open(buildEmail(),'_blank'); }
+      if(e.target.id==='checkoutGmail'){ if(cart.length===0){ alert('Your cart is empty.'); return; } window.open(buildGmailWeb(),'_blank'); }
+      if(e.target.id==='checkoutWhatsApp'){ if(cart.length===0){ alert('Your cart is empty.'); return; } const wa=buildWhatsApp(); if(wa) window.open(wa,'_blank'); else alert('WhatsApp number not configured.'); }
+      if(e.target.id==='contactBtn'){ window.location.href=`mailto:${STORE.email}`; }
+
+      const view = e.target.closest('[data-view]'); if(view){ openQuickView(view.getAttribute('data-view')); }
+      if(e.target.id==='closeQV' || e.target=== $$('#quickView')){ closeQuickView(); }
+      if(e.target.id==='qvAdd' && currentId){ addToCart(currentId); }
+      if(e.target.id==='qvEmail' && currentId){
+        // build a single-item email for quick inquiries
+        const p=products.find(x=>x.id===currentId); if(!p) return;
+        const subject=encodeURIComponent(`${STORE.businessName} — Query about ${p.name}`);
+        const body=encodeURIComponent(`Hi ${STORE.businessName},\n\nI'm interested in:\n• ${p.name} — ${fmt(p.price)}\n\nPlease let me know availability and pickup/delivery options.\n\nThanks!`);
+        window.open(`mailto:${STORE.email}?subject=${subject}&body=${body}`,'_blank');
+      }
+    });
+
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeQuickView(); });
+
+    $$('#q').addEventListener('input', e=> renderCatalog(e.target.value, $$('#tagFilter').value));
+    $$('#tagFilter').addEventListener('change', e=> renderCatalog($$('#q').value, e.target.value));
+
     // Init
     (function init(){
       renderCatalog();
       updateCartUI();
-      $$('#ig').href = STORE.instagram; $$('#tiktok').href = STORE.tiktok;
-      $$('#contactEmail').href = `mailto:${STORE.email}`; $$('#year').textContent = new Date().getFullYear();
+      $$('#year').textContent = new Date().getFullYear();
     })();
   </script>
 </body>
 </html>
-
