@@ -14,26 +14,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #fafafa;
-      --card: #ffffff;
-      --muted: #6b7280; /* slate-500 */
-      --text: #0f172a;  /* slate-900 */
-      --border: #e5e7eb; /* gray-200 */
-      --accent: #ec4899; /* pink-500 */
-      --ring: rgba(236,72,153,.25);
-      --shadow: 0 10px 30px rgba(2,6,23,.06);
-      --radius: 20px;
-      --space: clamp(16px, 3vw, 28px);
-      --maxw: 1200px;
+      --bg:#fafafa; --card:#fff; --muted:#6b7280; --text:#0f172a; --border:#e5e7eb;
+      --accent:#ec4899; --ring:rgba(236,72,153,.25); --shadow:0 10px 30px rgba(2,6,23,.06);
+      --radius:20px; --space:clamp(16px,3vw,28px); --maxw:1200px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg)}
+    *{box-sizing:border-box} html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);background:var(--bg)}
 
-    /* HEADER */
     header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.85);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border)}
     .container{width:min(var(--maxw),100%);margin:0 auto;padding:0 var(--space)}
     .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:800;letter-spacing:.2px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:800}
     .brand .logo{width:40px;height:40px;border-radius:12px;background:conic-gradient(from 120deg,#fce7f3,#fde68a,#d1fae5,#bfdbfe,#fce7f3);box-shadow:0 0 0 4px rgba(17,24,39,.03),var(--shadow)}
 
     .searchbar{flex:1 1 520px;display:flex;gap:10px}
@@ -44,7 +34,6 @@
     .icon-btn:hover{border-color:var(--accent)}
     .badge{position:absolute;top:-6px;right:-6px;background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:2px 6px;border-radius:999px}
 
-    /* HERO */
     .hero{padding:calc(var(--space)*1.2) 0}
     .hero-card{display:grid;grid-template-columns:1.15fr 1fr;gap:var(--space);background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--border);border-radius:var(--radius);padding:calc(var(--space)*1.1);box-shadow:var(--shadow)}
     @media (max-width:900px){.hero-card{grid-template-columns:1fr}}
@@ -52,11 +41,10 @@
     .hero p{margin:8px 0 14px;color:var(--muted);font-size:clamp(14px,1.6vw,16px)}
     .pill{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:12px}
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:700;letter-spacing:.2px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:700}
     .btn-primary{background:var(--text);color:#fff}
     .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
 
-    /* GRID */
     #catalog{padding:0 0 calc(var(--space)*2)}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,26px)}
     @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
@@ -78,16 +66,15 @@
     .add button:hover{filter:brightness(1.05)}
     .add button[disabled]{opacity:.6;cursor:not-allowed}
 
-    /* DRAWER */
     .drawer{position:fixed;top:0;right:0;width:min(440px,92vw);height:100vh;background:#fff;border-left:1px solid var(--border);transform:translateX(100%);transition:transform .25s ease;z-index:70;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(2,6,23,.06)}
     .drawer.open{transform:translateX(0)}
-    .drawer header{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:transparent;position:static}
+    .drawer header{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
     .drawer .items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:16px}
     .drawer .item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px}
     .drawer .item img{width:72px;height:72px;object-fit:cover;border-radius:8px}
     .qty{display:flex;align-items:center;gap:6px}
     .qty button{width:28px;height:28px;border-radius:8px;border:1px solid var(--border);background:#f8fafc;color:var(--text);cursor:pointer}
-    .drawer footer{padding:16px;border-top:1px solid var(--border);background:#fff}
+    .drawer footer{padding:16px;border-top:1px solid var(--border)}
     .rowy{display:flex;align-items:center;justify-content:space-between;margin:8px 0}
 
     footer.site{border-top:1px solid var(--border);color:var(--muted)}
@@ -128,8 +115,8 @@
         </div>
         <div>
           <div class="pill">How it works</div>
-          <p class="desc" style="margin-top:8px;color:var(--muted)">Add items to your cart → checkout via email (or WhatsApp link) → choose pickup in Brampton or delivery. We’ll confirm your order promptly during business hours.</p>
-          <p class="desc" style="color:var(--muted)"><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="mailto:aysha.arora2002@gmail.com">aysha.arora2002@gmail.com</a></p>
+          <p class="desc" style="margin-top:8px;color:var(--muted)">Add items to your cart → checkout via Email or WhatsApp → choose pickup in Brampton or delivery. We’ll confirm promptly during business hours.</p>
+          <p class="desc" style="color:var(--muted)"><strong>Hours:</strong> Mon–Sat 10am–7pm • <strong>Email:</strong> <a id="contactEmail" href="mailto:orders@bramptongifts.com">orders@bramptongifts.com</a></p>
         </div>
       </div>
     </section>
@@ -150,6 +137,7 @@
       <div class="desc" style="color:var(--muted)">Taxes + shipping shown at confirmation. Pickup in Brampton is free.</div>
       <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-primary" id="checkoutEmail">Checkout via Email</button>
+        <button class="btn btn-outline" id="checkoutWhatsApp">Checkout via WhatsApp</button>
         <button class="btn btn-outline" id="clearCart">Clear cart</button>
       </div>
     </footer>
@@ -166,21 +154,25 @@
     // ======== CONFIGURE ME ========
     const STORE = {
       businessName: "BramptonGifts",
-      email: "aysha.arora2002@gmail.com", // where orders will be emailed
+      // IMPORTANT: set this to a REAL mailbox you can receive at.
+      // If you haven't created orders@bramptongifts.com yet, use your Gmail for now.
+      email: "aysha.arora2002@gmail.com",
+      ccEmail: "", // optional: e.g., "rosyarora.cr@gmail.com" to get a copy
       currency: "CAD",
-      locale: 'en-CA',
-      instagram: "https://instagram.com/yourhandle",
+      locale: "en-CA",
+      instagram: "https://instagram.com/bramptongifts",
       tiktok: "https://tiktok.com/@yourhandle",
       pickupAddress: "Near Bramalea City Centre, Brampton, ON",
+      // WhatsApp: use digits with country code, no spaces or plus. Example: "1647XXXXXXX"
+      whatsappNumber: "16473810660"
     };
 
-    // Upload these files to /Images in your repo with the same names.
+    // Images folder is capital I: /Images
     const products = [
       {
         id: "lotus-hanging-pair-yellow",
         name: "Shubh Labh Lotus Hangings (Pair) — Yellow",
-        price: 24.00,
-        stock: 10,
+        price: 24.00, stock: 10,
         image: "Images/IMG_6219.jpg",
         description: "Wooden lotus with pearls & yellow pom-poms. Set of 2.",
         tags: ["decor","hangings","diwali"]
@@ -188,8 +180,7 @@
       {
         id: "lotus-hanging-pair-pink",
         name: "Shubh Labh Lotus Hangings (Pair) — Pink/Green",
-        price: 24.00,
-        stock: 10,
+        price: 24.00, stock: 10,
         image: "Images/IMG_6217.jpg",
         description: "Wooden lotus with pearls & pink/green details. Set of 2.",
         tags: ["decor","hangings","navratri"]
@@ -197,8 +188,7 @@
       {
         id: "toran-mixed",
         name: "Bandhanwar Toran — Mixed Colours",
-        price: 34.00,
-        stock: 9,
+        price: 34.00, stock: 9,
         image: "Images/IMG_6218.jpg",
         description: "Embroidered torans with pearls and pom-poms. Choose your colour in checkout.",
         tags: ["toran","door","decor"]
@@ -206,8 +196,7 @@
       {
         id: "floral-ganesh-toran",
         name: "Floral Toran with Ganesh",
-        price: 49.00,
-        stock: 4,
+        price: 49.00, stock: 4,
         image: "Images/IMG_6223.jpg",
         description: "Artificial flowers with Ganesh & swastik medallions; pearl tassels.",
         tags: ["toran","floral","pooja"]
@@ -215,8 +204,7 @@
       {
         id: "tealight-round-pair",
         name: "Decorative Tealight Holders (Pair)",
-        price: 14.00,
-        stock: 15,
+        price: 14.00, stock: 15,
         image: "Images/PHOTO-2025-08-30-21-09-22.jpg",
         description: "Embellished round tealight holders — assorted colours.",
         tags: ["tealight","candles","decor"]
@@ -224,17 +212,15 @@
       {
         id: "lotus-string-pink",
         name: "Lotus Bead Curtain — Pink/Yellow",
-        price: 19.00,
-        stock: 12,
-        image: "Images/PHOTO-2025-08-30-21-09-22 (1).jpg",
+        price: 19.00, stock: 12,
+        image: "Images/PHOTO-2025-08-30-21-09-22%20(1).jpg",
         description: "Single hanging string with lotus & pearls; looks great in sets.",
         tags: ["decor","hangings","navratri"]
       },
       {
         id: "ganesh-diya-stand",
         name: "Ganesh Multi-Wick Diya Stand",
-        price: 39.00,
-        stock: 5,
+        price: 39.00, stock: 5,
         image: "Images/IMG_6221.jpg",
         description: "Metal Ganesh diya with multiple wicks for a radiant pooja setup.",
         tags: ["pooja","metal","gift"]
@@ -295,44 +281,6 @@
       $$('#subtotal').textContent = fmt(subtotal);
     }
 
-    function renderCatalog(filterText = '', tag = ''){
-      const grid = $$('#grid'); grid.innerHTML='';
-      const tags = new Set();
-      products.forEach(p=> p.tags?.forEach(t=>tags.add(t)));
-      const tagSel = $$('#tagFilter'); if(tagSel.options.length<=1){
-        Array.from(tags).sort().forEach(t=>{
-          const o = document.createElement('option'); o.value=t; o.textContent=t; tagSel.appendChild(o);
-        });
-      }
-      const q = filterText.toLowerCase().trim();
-      products.filter(p => {
-        const matchesQ = !q || [p.name, p.description, ...(p.tags||[])].join(' ').toLowerCase().includes(q);
-        const matchesTag = !tag || (p.tags||[]).includes(tag);
-        return matchesQ && matchesTag;
-      }).forEach(p=>{
-        const card = document.createElement('article'); card.className = 'card'; card.setAttribute('aria-label', p.name);
-        card.innerHTML = `
-          <div class="thumb"><img src="${p.image}" alt="${p.name}"></div>
-          <div class="info">
-            <div class="title">${p.name}</div>
-            <div class="desc">${p.description}</div>
-            <div class="taglist">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-            <div class="price-row">
-              <div class="price">${fmt(p.price)}</div>
-              <div class="stock">${p.stock>0?`${p.stock} in stock`:'Out of stock'}</div>
-            </div>
-            <div class="add">
-              <button ${p.stock<=0?'disabled':''} data-add="${p.id}">${p.stock<=0? 'Sold out':'Add to cart'}</button>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function openDrawer(){ const d=$$('#drawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); }
-    function closeDrawer(){ const d=$$('#drawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); }
-
     function buildEmail(){
       const ts = new Date().toISOString().replace(/[-:T]/g,'').slice(0,12);
       let body = `Hello ${STORE.businessName},%0D%0A%0D%0AI'd like to place this order:%0D%0A%0D%0A`;
@@ -346,7 +294,23 @@
       body += `%0D%0APreference: Pickup at ${encodeURIComponent(STORE.pickupAddress)} or Delivery (address below)%0D%0A`;
       body += `%0D%0AName:%0D%0APhone:%0D%0AColour/variant (if any):%0D%0ADelivery address (if needed):%0D%0APreferred date/time:%0D%0APayment method (e-transfer / cash on pickup):%0D%0A`;
       const subject = encodeURIComponent(`${STORE.businessName} Order #${ts}`);
-      return `mailto:${STORE.email}?subject=${subject}&body=${body}`;
+      const to = `mailto:${STORE.email}?subject=${subject}&body=${body}`;
+      const cc = STORE.ccEmail ? `&cc=${encodeURIComponent(STORE.ccEmail)}` : "";
+      return to + cc;
+    }
+
+    function buildWhatsApp(){
+      if(!STORE.whatsappNumber){ return null; }
+      let text = `Order for ${STORE.businessName}%0A%0A`;
+      let total = 0;
+      cart.forEach(it=>{
+        const p = products.find(x=>x.id===it.id); if(!p) return;
+        total += p.price * it.qty;
+        text += `• ${p.name} x ${it.qty} — ${fmt(p.price*it.qty)}%0A`;
+      });
+      text += `%0ASubtotal: ${fmt(total)}%0A%0A`;
+      text += `Name:%0APhone:%0AColour/variant (if any):%0ADelivery address (if needed):%0APreferred date/time:%0APayment method (e-transfer / cash on pickup):`;
+      return `https://wa.me/${STORE.whatsappNumber}?text=${text}`;
     }
 
     // Events
@@ -356,15 +320,55 @@
       const dec = e.target.closest('[data-dec]'); if(dec){ const id=dec.getAttribute('data-dec'); const it=cart.find(x=>x.id===id); if(it){ setQty(id, it.qty-1); }}
       const inc = e.target.closest('[data-inc]'); if(inc){ const id=inc.getAttribute('data-inc'); const it=cart.find(x=>x.id===id); if(it){ setQty(id, it.qty+1); }}
       const rm = e.target.closest('[data-remove]'); if(rm){ removeItem(rm.getAttribute('data-remove')); }
-      if(e.target.id==='cartBtn'){ openDrawer(); }
-      if(e.target.id==='closeDrawer'){ closeDrawer(); }
+      if(e.target.id==='cartBtn'){ const d=$$('#drawer'); d.classList.add('open'); d.setAttribute('aria-hidden','false'); }
+      if(e.target.id==='closeDrawer'){ const d=$$('#drawer'); d.classList.remove('open'); d.setAttribute('aria-hidden','true'); }
       if(e.target.id==='clearCart'){ clearCart(); }
-      if(e.target.id==='checkoutEmail'){ if(cart.length===0){ alert('Your cart is empty.'); return; } window.location.href = buildEmail(); }
+      if(e.target.id==='checkoutEmail'){
+        if(cart.length===0){ alert('Your cart is empty.'); return; }
+        window.open(buildEmail(), '_blank'); // open compose
+      }
+      if(e.target.id==='checkoutWhatsApp'){
+        if(cart.length===0){ alert('Your cart is empty.'); return; }
+        const wa = buildWhatsApp();
+        if(!wa){ alert('WhatsApp number not configured.'); return; }
+        window.open(wa, '_blank');
+      }
       if(e.target.id==='contactBtn'){ window.location.href = `mailto:${STORE.email}`; }
     });
 
     $$('#q').addEventListener('input', (e)=>{ renderCatalog(e.target.value, $$('#tagFilter').value); });
     $$('#tagFilter').addEventListener('change', (e)=>{ renderCatalog($$('#q').value, e.target.value); });
+
+    function renderCatalog(filterText = '', tag = ''){
+      const grid = $$('#grid'); grid.innerHTML='';
+      const tags = new Set(); products.forEach(p=> p.tags?.forEach(t=>tags.add(t)));
+      const tagSel = $$('#tagFilter'); if(tagSel.options.length<=1){
+        Array.from(tags).sort().forEach(t=>{ const o = document.createElement('option'); o.value=t; o.textContent=t; tagSel.appendChild(o); });
+      }
+      const q = filterText.toLowerCase().trim();
+      products.filter(p => {
+        const matchesQ = !q || [p.name, p.description, ...(p.tags||[])].join(' ').toLowerCase().includes(q);
+        const matchesTag = !tag || (p.tags||[]).includes(tag);
+        return matchesQ && matchesTag;
+      }).forEach(p=>{
+        const card = document.createElement('article'); card.className='card'; card.setAttribute('aria-label', p.name);
+        card.innerHTML = `
+          <div class="thumb"><img src="${p.image}" alt="${p.name}"></div>
+          <div class="info">
+            <div class="title">${p.name}</div>
+            <div class="desc">${p.description}</div>
+            <div class="taglist">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+            <div class="price-row">
+              <div class="price">${fmt(p.price)}</div>
+              <div class="stock">${p.stock>0?`${p.stock} in stock`:'Out of stock'}</div>
+            </div>
+            <div class="add">
+              <button ${p.stock<=0?'disabled':''} data-add="${p.id}">${p.stock<=0?'Sold out':'Add to cart'}</button>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
 
     // Init
     (function init(){
